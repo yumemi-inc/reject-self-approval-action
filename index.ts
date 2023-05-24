@@ -24,20 +24,14 @@ const getInputRequired = (name: string) =>
 	const reviews = response.data;
 	await group('Reviews', async () => {
 		reviews.forEach((a) => {
-			info(
-				`${a.user.name} (@${a.user.login}) ${a.state}: ${
-					a.comment ?? '<none>'
-				}`,
-			);
+			info(`@${a.user.login} ${a.state}: ${a.comment ?? '<none>'}`);
 		});
 	});
 
 	const approvals = reviews.filter((a) => a.state === 'approved');
 	await group('Approvals', async () => {
 		approvals.forEach((a) => {
-			info(
-				`${a.user.name} (@${a.user.login}) approved: ${a.comment ?? '<none>'}`,
-			);
+			info(`@${a.user.login} approved: ${a.comment ?? '<none>'}`);
 		});
 	});
 

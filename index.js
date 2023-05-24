@@ -13929,17 +13929,13 @@ var getInputRequired = (name) => (0, import_core.getInput)(name, {
   const reviews = response.data;
   await (0, import_core.group)("Reviews", async () => {
     reviews.forEach((a) => {
-      (0, import_core.info)(
-        `${a.user.name} (@${a.user.login}) ${a.state}: ${a.comment ?? "<none>"}`
-      );
+      (0, import_core.info)(`@${a.user.login} ${a.state}: ${a.comment ?? "<none>"}`);
     });
   });
   const approvals = reviews.filter((a) => a.state === "approved");
   await (0, import_core.group)("Approvals", async () => {
     approvals.forEach((a) => {
-      (0, import_core.info)(
-        `${a.user.name} (@${a.user.login}) approved: ${a.comment ?? "<none>"}`
-      );
+      (0, import_core.info)(`@${a.user.login} approved: ${a.comment ?? "<none>"}`);
     });
   });
   if (!approvals.some((a) => a.user.login !== import_github.context.actor)) {
