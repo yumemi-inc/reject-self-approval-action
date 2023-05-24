@@ -1,0 +1,14 @@
+name: Reject Self Approval Action
+description: Reject self approved deployments.
+author: YUMEMI Inc.
+branding:
+  icon: alert-triangle
+  color: yellow
+runs:
+  using: node16
+  main: 'index.js'
+inputs:
+  token:
+    required: true
+    description: GitHub token with actions:read access.
+    default: '${{ github.token }}'
