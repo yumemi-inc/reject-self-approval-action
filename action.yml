@@ -12,3 +12,7 @@ inputs:
     required: true
     description: GitHub token with actions:read access.
     default: '${{ github.token }}'
+  allow-no-reviews:
+    required: true
+    description: GitHub token with actions:read access.
+    default: 'false'
