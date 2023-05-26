@@ -36,3 +36,16 @@ jobs:
 
       - run: terraform apply
 ```
+
+
+## Advanced Usages
+
+### Allow no reviews
+
+To allow force deployments without any reviews, pass `true` to `allow-no-reviews` input:
+
+```yaml
+- uses: yumemi-inc/reject-self-approval-action@v1
+  with:
+    allow-no-reviews: true
+```

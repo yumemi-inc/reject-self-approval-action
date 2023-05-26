@@ -1,16 +1,21 @@
 import { exit } from 'node:process';
 
-import { error, getInput, group, info, setFailed } from '@actions/core';
+import {
+  error,
+  getBooleanInput,
+  getInput,
+  group,
+  info,
+  setFailed,
+} from '@actions/core';
 import { context } from '@actions/github';
 import { Octokit } from '@octokit/rest';
 
-const getInputRequired = (name: string) =>
-  getInput(name, {
-    required: true,
-  });
+const required = { required: true };
 
 (async () => {
-  const token = getInputRequired('token');
+  const token = getInput('token', required);
+  const allowNoReviews = getBooleanInput('allow-no-reviews', required);
 
   const octokit = new Octokit({
     auth: token,
