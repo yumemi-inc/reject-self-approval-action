@@ -2092,7 +2092,7 @@ var require_core = __commonJS({
       return inputs.map((input) => input.trim());
     }
     exports.getMultilineInput = getMultilineInput;
-    function getBooleanInput(name, options) {
+    function getBooleanInput2(name, options) {
       const trueValue = ["true", "True", "TRUE"];
       const falseValue = ["false", "False", "FALSE"];
       const val = getInput2(name, options);
@@ -2103,7 +2103,7 @@ var require_core = __commonJS({
       throw new TypeError(`Input does not meet YAML 1.2 "Core Schema" specification: ${name}
 Support boolean input list: \`true | True | TRUE | false | False | FALSE\``);
     }
-    exports.getBooleanInput = getBooleanInput;
+    exports.getBooleanInput = getBooleanInput2;
     function setOutput(name, value) {
       const filePath = process.env["GITHUB_OUTPUT"] || "";
       if (filePath) {
@@ -10206,11 +10206,10 @@ var import_node_process = require("node:process");
 var import_core = __toESM(require_core());
 var import_github = __toESM(require_github());
 var import_rest = __toESM(require_dist_node20());
-var getInputRequired = (name) => (0, import_core.getInput)(name, {
-  required: true
-});
+var required = { required: true };
 (async () => {
-  const token = getInputRequired("token");
+  const token = (0, import_core.getInput)("token", required);
+  const allowNoReviews = (0, import_core.getBooleanInput)("allow-no-reviews", required);
   const octokit = new import_rest.Octokit({
     auth: token
   });
