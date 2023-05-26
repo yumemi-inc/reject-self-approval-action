@@ -8,6 +8,8 @@ on:
         description: 'Version name of the new release.'
         required: true
 
+run-name: 'Release ${{ inputs.version }}'
+
 jobs:
   new:
     name: New Release
