@@ -40,7 +40,10 @@ const required = { required: true };
     });
   });
 
-  if (!approvals.some((a) => a.user.login !== context.actor)) {
+  if (
+    !(allowNoReviews && reviews.length === 0) &&
+    !approvals.some((a) => a.user.login !== context.actor)
+  ) {
     setFailed('One or more approvals from others are required.');
     exit(1);
   }
