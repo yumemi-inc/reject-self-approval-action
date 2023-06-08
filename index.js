@@ -10229,7 +10229,7 @@ var required = { required: true };
       (0, import_core.info)(`@${a.user.login} approved: ${a.comment ?? "<none>"}`);
     });
   });
-  if (!approvals.some((a) => a.user.login !== import_github.context.actor)) {
+  if (!(allowNoReviews && reviews.length === 0) && !approvals.some((a) => a.user.login !== import_github.context.actor)) {
     (0, import_core.setFailed)("One or more approvals from others are required.");
     (0, import_node_process.exit)(1);
   }
