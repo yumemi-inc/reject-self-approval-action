@@ -5,7 +5,7 @@ branding:
   icon: alert-triangle
   color: yellow
 runs:
-  using: node16
+  using: node20
   main: 'index.js'
 inputs:
   token:
