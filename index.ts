@@ -10,6 +10,7 @@ import {
 } from '@actions/core';
 import { context } from '@actions/github';
 import { Octokit } from '@octokit/rest';
+import fetch from 'node-fetch';
 
 const required = { required: true };
 
@@ -19,6 +20,7 @@ const required = { required: true };
 
   const octokit = new Octokit({
     auth: token,
+    request: fetch,
   });
 
   const response = await octokit.actions.getReviewsForRun({
