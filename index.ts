@@ -7,6 +7,7 @@ import {
   group,
   info,
   setFailed,
+  warning,
 } from '@actions/core';
 import { context } from '@actions/github';
 import { Octokit } from '@octokit/rest';
@@ -15,6 +16,14 @@ import fetch from 'node-fetch';
 const required = { required: true };
 
 (async () => {
+  warning(
+    `
+yumemi-inc/reject-self-approval-action is abandoned since GitHub now officially supports preventing self reviews.
+Please update your workflow to remove the action and turn on the prevention on your environments.
+https://github.blog/changelog/2023-10-16-actions-prevent-self-reviews-for-secure-deployments-across-actions-environments/
+`.trim(),
+  );
+
   const token = getInput('token', required);
   const allowNoReviews = getBooleanInput('allow-no-reviews', required);
 

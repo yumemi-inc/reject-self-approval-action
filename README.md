@@ -1,6 +1,12 @@
 # Reject Self Approval Action
 
-> **Warning**  
+> [!WARNING]
+> yumemi-inc/reject-self-approval-action is abandoned since GitHub now officially supports preventing self reviews.
+> Please update your workflow to remove the action and turn on the prevention on your environments.
+> 
+> https://github.blog/changelog/2023-10-16-actions-prevent-self-reviews-for-secure-deployments-across-actions-environments/
+
+> [!WARNING]
 > This is not an official product of YUMEMI Inc.
 
 Reject self approved deployments.
